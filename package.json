@@ -1,22 +1,27 @@
 {
-  "name": "fastcdc",
-  "version": "1.0.1",
+  "name": "node-fastcdc",
+  "version": "2.0.0",
   "description": "NodeJS bindings for fastcdc-rs",
   "main": "index.js",
   "scripts": {
-    "build": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
-    "build-debug": "npm run build --",
-    "build-release": "npm run build -- --release",
-    "install": "npm run build-release",
-    "test": "cargo test"
+    "test": "cargo test",
+    "cargo-build": "cargo build --message-format=json > cargo.log",
+    "cross-build": "cross build --message-format=json > cross.log",
+    "postcargo-build": "neon dist -v < cargo.log",
+    "postcross-build": "neon dist -m /target < cross.log",
+    "debug": "npm run cargo-build --",
+    "build": "npm run cargo-build -- --release",
+    "cross": "npm run cross-build -- --release"
   },
   "repository": "git@github.com:mikolalysenko/node-fastcdc.git",
   "author": "Mikola Lysenko",
   "license": "ISC",
   "dependencies": {
-    "cargo-cp-artifact": "^0.1"
+    "cargo-cp-artifact": "^0.1.9"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@neon-rs/cli": "0.1.68"
+  },
   "keywords": [
     "fastcdc",
     "content",

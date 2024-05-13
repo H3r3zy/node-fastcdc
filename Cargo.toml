@@ -1,6 +1,6 @@
 [package]
-name = "fastcdc"
-version = "1.0.0"
+name = "node-fastcdc"
+version = "2.0.0"
 description = "NodeJS bindings for rust-fastcdc"
 authors = ["Mikola Lysenko"]
 license = "ISC"
@@ -13,9 +13,5 @@ crate-type = ["cdylib"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-fastcdc = "1.0.5"
-
-[dependencies.neon]
-version = "0.9"
-default-features = false
-features = ["napi-6"]
+fastcdc = "3.1.0"
+neon = "1"
